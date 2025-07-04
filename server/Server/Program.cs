@@ -22,6 +22,12 @@ builder.Services.AddDbContext<DbContext_app>(
                 .UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), serverVersion)
         );
 
+//builder.Services.AddDbContext<DbContext_app>(options =>
+//    options.UseMySql(
+//        builder.Configuration.GetConnectionString("DefaultConnection"),
+//        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+//    ));
+
 //this file is generated for the file identity; you have that modificate
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<DbContext_app>().AddDefaultTokenProviders(); ;
 

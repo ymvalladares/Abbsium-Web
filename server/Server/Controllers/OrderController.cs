@@ -19,8 +19,6 @@ namespace Server.Controllers
         }
 
 
-
-
         [HttpPost("create-checkout-session")]
         public async Task<IActionResult> CreateCheckoutSession([FromBody] CreatePaymentRequest request)
         {
