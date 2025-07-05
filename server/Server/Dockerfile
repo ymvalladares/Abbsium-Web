@@ -7,16 +7,11 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-# Copiamos todo (Docker ya está en la carpeta correcta)
-COPY . .
+COPY . .                             
+RUN dotnet restore Server.csproj     
+RUN dotnet publish Server.csproj -c Release -o /app/publish  
 
-# Restauramos dependencias
-RUN dotnet restore
 
-# Publicamos la app
-RUN dotnet publish -c Release -o /app/publish
-
-# Stage 3: Final image
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
